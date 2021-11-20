@@ -718,6 +718,20 @@ input {
                         </div>
                         <div class="row row-space">
                             <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Password</label>
+                                    <input class="input--style-4" type="password" name="password">
+                                </div>
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <label class="label">Confirm Password</label>
+                                    <input class="input--style-4" type="text" name="confirm_password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
                                  <div class="col-2">
                                      <div class="input-group">
                                         <label class="label">University Roll Number</label>
@@ -754,15 +768,18 @@ input {
                             </div>
                             
                         </div>
-                        <div class="input-group">
-                            <label class="label">University</label>
-                            <div class="rs-select2 js-select-simple select--no-search">
-                                <select class="input--style-4" style="width:550px;height:40px;" >
-                                    <option  disabled="disabled" selected="selected" name="University" value="-1">Select University</option>
-                                    <option>IKGPTU</option>
-                                    <option>MRPTU</option>  
-                                </select>
-                              </div><br>
+                        <div class="row row-space">
+                            <div class="input-group">
+                                <label class="label">University</label>
+                                <div class="rs-select2 js-select-simple select--no-search">
+                                    <select class="input--style-4" style="width:550px;height:40px;" >
+                                        <option  disabled="disabled" selected="selected" name="University" value="-1">Select University</option>
+                                        <option>IKGPTU</option>
+                                        <option>MRPTU</option>  
+                                    </select>
+                              </div>
+                           </div>
+                          <div class="row row-space">
                           <div class="input-group">
                             <label class="label">College</label>
                             <div class="rs-select2 js-select-simple select--no-search">
@@ -844,6 +861,8 @@ input {
                                 </select>
                               </div>
                         </div>
+                        </div>
+                            <div class="row row-space">
                             <div class="input-group">
                             <label class="label">Branch</label>
                             <div class="rs-select2 js-select-simple select--no-search">
@@ -855,7 +874,9 @@ input {
                                     <option>PHARMACY</option>
                                 </select>
                               </div>
-                            </div>    
+                            </div>
+                            </div>
+                        
                         <div class="p-t-15">
                             <button class="btn btn--radius-2 btn--blue" type="submit">Submit</button>
                         </div>
@@ -865,17 +886,6 @@ input {
         </div>
     </div>
 
-    <!-- Jquery JS-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <!-- Vendor JS-->
-    <script src="vendor/select2/select2.min.js"></script>
-    <script src="vendor/datepicker/moment.min.js"></script>
-    <script src="vendor/datepicker/daterangepicker.js"></script>
-
-    <!-- Main JS-->
-    <script src="js/global.js"></script>
-
-</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</body>
 
 </html>
-<!-- end document-->
