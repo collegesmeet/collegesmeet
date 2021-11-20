@@ -24,7 +24,7 @@ def sign_up():
   return text
 
 @app.route("/sign_up_submit", methods=['POST'])
-def profile():
+def PROFILE():
   f=open("profile/Profile.html","r")
   text=f.read()
   f.close()
