@@ -16,7 +16,7 @@ def sign_in():
   f.close()
   return text
 
-@app.route("/sign_up", methods=['GET'])
+@app.route("/wait_on working", methods=['GET'])
 def sign_up():
   f=open("signup/sign_up.html","r")
   text=f.read()
