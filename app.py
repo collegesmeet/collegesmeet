@@ -23,7 +23,7 @@ def sign_up():
   f.close()
   return text
 
-@app.route("/sign_up", methods=['POST'])
+@app.route("/sign_up", methods=['GET'])
 def PROFILE():
   f=open("profile/Profile.html","r")
   text=f.read()
