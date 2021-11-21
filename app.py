@@ -30,7 +30,7 @@ def PROFILE():
   f.close()
   return text
 
-@app.route("/profile_submit", methods=['POST'])
+@app.route("/profile_submit", methods=['GET', 'POST'])
 def PROFILE_SUBMIT():
   try: first_name = request.form['first_name']
   except: first_name="can't_read"
@@ -48,11 +48,11 @@ def PROFILE_SUBMIT():
   except: email="can't_read"
   try: phone_number = request.form['phone_number']
   except: phone_number="can't_read"
-  try: University = request.form.get['University']
+  try: University = request.form.get('University')
   except: University="can't_read"
-  try: Branch = request.form.get['Branch']
+  try: Branch = request.form.get('Branch')
   except: Branch="can't_read"
-  try: College = request.form.get['College']
+  try: College = request.form.get('College')
   except: College="can't_read"
   
   text=f"first_name = {first_name} \n"+f"last_name = {last_name} \n"+f"password = {password} \n"+f"confirm_password = {confirm_password} \n"+f"University_Roll = {University_Roll} \n"+f"gender = {gender} \n"+f"email = {email} \n"+f"phone_number = {phone_number} \n"+f"University = {University} \n"+f"Branch = {Branch} \n"++f"College = {College} \n"
