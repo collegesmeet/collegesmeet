@@ -30,7 +30,7 @@ def PROFILE():
   f.close()
   return text
 
-@app.route("/profile_submit", methods=['POST'])
+@app.route("/profile_submit", methods=['GET'])
 def PROFILE_SUBMIT():
   try: first_name = request.form['first_name']
   except: first_name="can't_read"
