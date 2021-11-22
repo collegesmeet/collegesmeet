@@ -7,6 +7,4 @@ Werkzeug
 pymysql
 mysql-connector-python
 mysqlclient
-requests
-python-firebase
 gunicorn
