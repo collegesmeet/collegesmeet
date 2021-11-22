@@ -115,14 +115,11 @@ def PROFILE_SUBMIT():
     #   except:
     #     return "SORRY CANT SAVE YOUR DATA"
     try:
-      r=profile_data_save(first_name, last_name,	password,	University_Roll,	gender,	email,	phone_number,	University,	Branch,	College)
-      if len(list(r.keys()))>0:
+        r=profile_data_save(first_name, last_name,	password,	University_Roll,	gender,	email,	phone_number,	University,	Branch,	College)
         table=profile_data_read_and_conv_to_table()
         return table.to_html()
-      else:
-        return "ERROR 2468"
     except:
-      return "SORRY CAN'T SAVE YOUR DATA"
+        return "SORRY CAN'T SAVE YOUR DATA"
   
   
   
