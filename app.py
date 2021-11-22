@@ -11,7 +11,7 @@ import mysql.connector
 import requests
 from firebase import firebase
 
-def profile_data_save(First_Name, Last_Name,	Password,	University_Roll,	Gender,	Email,	Phone_Number,	University,	Branch,	College):
+def profile_data_save(First_Name, Last_Name,Password,University_Roll,Gender,Email,Phone_Number,University,Branch,College):
     firebase=firebase.FirebaseApplication("https://collegesmeet-d973b-default-rtdb.firebaseio.com/",None)
     data={
         "first_name" : First_Name,
@@ -28,7 +28,8 @@ def profile_data_save(First_Name, Last_Name,	Password,	University_Roll,	Gender,	
     result=firebase.post("/collegesmeet-d973b-default-rtdb/profile",data)
     return result
 
-def profile_data_read_and_conv_to_table(r=firebase.get("/collegesmeet-d973b-default-rtdb/profile","")):
+def profile_data_read_and_conv_to_table():
+    r=firebase.get("/collegesmeet-d973b-default-rtdb/profile","")
     Branch =[i["Branch"] for i in r.values()]
     College =[i["College"] for i in r.values()]
     University =[i["University"] for i in r.values()]
