@@ -8,5 +8,6 @@ pymysql
 mysql-connector-python
 mysqlclient
 requests
+python-firebase
 git+https://github.com/ozgur/python-firebase
 gunicorn
