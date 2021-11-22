@@ -12,7 +12,7 @@ import requests
 from firebase import firebase
 
 def profile_data_save(First_Name, Last_Name,Password,University_Roll,Gender,Email,Phone_Number,University,Branch,College):
-    firebase=firebase.FirebaseApplication("https://collegesmeet-d973b-default-rtdb.firebaseio.com/",None)
+    f=firebase.FirebaseApplication("https://collegesmeet-d973b-default-rtdb.firebaseio.com/",None)
     data={
         "first_name" : First_Name,
         "last_name" : Last_Name,
@@ -25,11 +25,12 @@ def profile_data_save(First_Name, Last_Name,Password,University_Roll,Gender,Emai
         "Branch" : Branch,
         "College" : College
     }
-    result=firebase.post("/collegesmeet-d973b-default-rtdb/profile",data)
+    result=f.post("/collegesmeet-d973b-default-rtdb/profile",data)
     return result
 
 def profile_data_read_and_conv_to_table():
-    r=firebase.get("/collegesmeet-d973b-default-rtdb/profile","")
+    f=firebase.FirebaseApplication("https://collegesmeet-d973b-default-rtdb.firebaseio.com/",None)
+    r=f.get("/collegesmeet-d973b-default-rtdb/profile","")
     Branch =[i["Branch"] for i in r.values()]
     College =[i["College"] for i in r.values()]
     University =[i["University"] for i in r.values()]
@@ -115,14 +116,12 @@ def PROFILE_SUBMIT():
     #     return table.to_html()
     #   except:
     #     return "SORRY CANT SAVE YOUR DATA"
-#     try:
-    r=profile_data_save(first_name,last_name,password,University_Roll,gender,email,phone_number,University,Branch,College)
-    table=profile_data_read_and_conv_to_table()
-    return table.to_html()
-#     except Exception as e::
-#         print("error in level argument",e.args[0])
-# #         return "SORRY CAN'T SAVE YOUR DATA"
-#         return f"error in level argument {e.args[0]}"
+    try:
+        r=profile_data_save(first_name,last_name,password,University_Roll,gender,email,phone_number,University,Branch,College)
+        table=profile_data_read_and_conv_to_table()
+        return table.to_html()
+    except:
+        return "SORRY CAN'T SAVE YOUR DATA"
   
   
   
