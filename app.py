@@ -65,6 +65,7 @@ def PROFILE_SUBMIT():
     cursor = conn.cursor()
     cursor.execute(f"""INSERT INTO profile VALUES ('{first_name}', '{last_name}', '{password}', '{University_Roll}', '{gender}', '{email}', '{phone_number}', '{University}', '{Branch}', '{College}' ) """)
     table=pd.read_sql_query("SELECT * FROM profile", conn)
+    table.to_sql('profile', con=conn,index=None, if_exists='replace')
     conn.close()
     return table.to_html()
   except:
