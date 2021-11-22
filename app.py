@@ -6,6 +6,10 @@ from flask import Flask, jsonify, request
 from werkzeug.utils import secure_filename
 from werkzeug.datastructures import  FileStorage
 import os
+import sqlite3
+
+conn = sqlite3.connect("collegesmeeet.db")
+
 app = Flask(__name__)
 # run_with_ngrok(app) 
 
@@ -55,9 +59,13 @@ def PROFILE_SUBMIT():
   try: College = request.form.get('College')
   except: College="can't_read"
   
-  text=f"first_name = {first_name} \n"+f"last_name = {last_name} \n"+f"password = {password} \n"+f"confirm_password = {confirm_password} \n"+f"University_Roll = {University_Roll} \n"+f"gender = {gender} \n"+f"email = {email} \n"+f"phone_number = {phone_number} \n"+f"University = {University} \n"+f"Branch = {Branch} \n"+f"College = {College} \n"
-  
-  return text
+  #text=f"first_name = {first_name} \n"+f"last_name = {last_name} \n"+f"password = {password} \n"+f"confirm_password = {confirm_password} \n"+f"University_Roll = {University_Roll} \n"+f"gender = {gender} \n"+f"email = {email} \n"+f"phone_number = {phone_number} \n"+f"University = {University} \n"+f"Branch = {Branch} \n"+f"College = {College} \n"
+  try: 
+    pd.read_sql_query(f"INSERT INTO profile VALUES ({first_name}, {last_name}, {password}, {University_Roll}, {Gender}, {Email}, {phone_number}, {University}, {Branch}, {College})",conn)
+    table=pd.read_sql_query("SELECT * FROM profile", conn)
+    return table.to_html()
+  except:
+    return "SORRY CANT SAVE YOUR DATA"
 
 
 
