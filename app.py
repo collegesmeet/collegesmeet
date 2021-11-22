@@ -116,7 +116,7 @@ def PROFILE_SUBMIT():
     #   except:
     #     return "SORRY CANT SAVE YOUR DATA"
     try:
-        r=profile_data_save(first_name, last_name,	password,	University_Roll,	gender,	email,	phone_number,	University,	Branch,	College)
+        r=profile_data_save(first_name,last_name,password,University_Roll,gender,email,phone_number,University,Branch,College)
         table=profile_data_read_and_conv_to_table()
         return table.to_html()
     except:
