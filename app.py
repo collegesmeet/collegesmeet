@@ -66,6 +66,6 @@ def PROFILE_SUBMIT():
     return table.to_html()
   except:
     return "SORRY CANT SAVE YOUR DATA"
-
-
-
+  
+  
+  
