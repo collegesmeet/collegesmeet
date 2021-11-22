@@ -9,7 +9,7 @@ import os
 import sqlite3
 import mysql.connector
 import requests
-from firebase import firebase
+# from firebase import firebase
 
 def profile_data_save(First_Name, Last_Name,	Password,	University_Roll,	Gender,	Email,	Phone_Number,	University,	Branch,	College):
     firebase=firebase.FirebaseApplication("https://collegesmeet-d973b-default-rtdb.firebaseio.com/",None)
