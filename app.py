@@ -119,8 +119,10 @@ def PROFILE_SUBMIT():
         r=profile_data_save(first_name,last_name,password,University_Roll,gender,email,phone_number,University,Branch,College)
         table=profile_data_read_and_conv_to_table()
         return table.to_html()
-    except:
-        return "SORRY CAN'T SAVE YOUR DATA"
+    except Exception as e::
+        print("error in level argument",e.args[0])
+#         return "SORRY CAN'T SAVE YOUR DATA"
+        return f"error in level argument {e.args[0]}"
   
   
   
