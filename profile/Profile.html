@@ -6,7 +6,59 @@
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+<script>
+      function validateform(){  
+	var name=document.profileform.first_name.value;
+	var University_roll=document.profileform.University_Roll.value;  
+	var password=document.profileform.password.value;  
+	var email=document.profileform.email.value;  
+	var phone_number=document.profileform.phone_number.value;  
+	var confirmpassword=document.profileform.confirm_password.value;
+	var University=document.profileform.University.value;
+	var Branch=document.profileform.Branch.value;
+	var college=document.profileform.College.value;  
+	  
+	  if (name==null || name==""){
+	  alert("Please Enter Your Name");  
+	  return false;  
+	}
+	  if(password!=confirmpassword){
+	  alert("Password Must Be Same");  
+	  return false; 
+	}
+	  if(password.length<6){
+	  alert("Password must be at least 6 characters long.");  
+	  return false;
+	}  
+	  if (University_roll==null || University_roll==""){  
+	  alert("Please Enter Your University RollNumber");  
+	  return false;  
+	}
+	  if(email==null || email==""){
+	  alert("Please Enter Your Email.");  
+	  return false; 
+	}
+	  if(phone_number==null || phone_number==""){
+	  alert("Please Enter Your Phone Number.");  
+	  return false; 
+	}
+	  if(University==null || University==""){
+	  alert("Please Select Your University.");  
+	  return false; 
+	}
+	 if(Branch==null || Branch==""){
+	  alert("Please Select Your Branch.");  
+	  return false; 
+	}
+	 if(college==null || college==""){
+	  alert("Please Select Your College.");  
+	  return false; 
+	}
+	}
+	   
+	
 
+ </script>
 <style type="text/css">
     
 /* ==========================================================================
@@ -705,18 +757,18 @@ input {
             <div class="card card-4">
                 <div class="card-body">
                     <h2 class="title">Profile Form</h2>
-                    <form method="POST" enctype="multipart/form-data">
+                    <form method="POST" name="profileform" onsubmit="return validateform()">
                         <div class="row row-space">
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">First name</label>
-                                    <input class="input--style-4" type="text" name="first_name">
+                                    <label class="label">first name</label>
+                                    <input class="input--style-4" type="text" name="first_name" pattern="^[A-Za-z]*$">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
-                                    <label class="label">Last name</label>
-                                    <input class="input--style-4" type="text" name="last_name">
+                                    <label class="label">last name</label>
+                                    <input class="input--style-4" type="text" name="last_name" pattern="^[A-Za-z]*$">
                                 </div>
                             </div>
                         </div>
@@ -724,13 +776,13 @@ input {
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Password</label>
-                                    <input class="input--style-4" type="password" name="password">
+                                    <input class="input--style-4" type="password" name="password" pattern="^\S*$">
                                 </div>
                             </div>
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Confirm Password</label>
-                                    <input class="input--style-4" type="password" name="confirm_password">
+                                    <input class="input--style-4" type="password" name="confirm_password" pattern="^\S*$">
                                 </div>
                             </div>
                         </div>
@@ -739,7 +791,7 @@ input {
                                 <div class="input-group">
                                     <label class="label">University Roll</label>
                                     <div class="input-group-icon">
-                                        <input class="input--style-4 js-datepicker" type="text" name="University_Roll">
+                                        <input class="input--style-4 js-datepicker" type="text" name="University_Roll" pattern="^\w*$">
                                     </div>
                                 </div>
                             </div>
@@ -748,11 +800,11 @@ input {
                                     <label class="label">Gender</label>
                                     <div class="p-t-10">
                                         <label class="radio-container m-r-45">Male
-                                            <input type="radio" checked="checked" name="gender" value="Male" id="Male">
+                                            <input type="radio" checked="checked" name="gender" value="Male">
                                             <span class="checkmark"></span>
                                         </label>
                                         <label class="radio-container">Female
-                                            <input type="radio" name="gender" value="Female" id="Female">
+                                            <input type="radio" name="gender" value="Female">
                                             <span class="checkmark"></span>
                                         </label>
                                     </div>
@@ -769,7 +821,7 @@ input {
                             <div class="col-2">
                                 <div class="input-group">
                                     <label class="label">Phone Number</label>
-                                    <input class="input--style-4" type="text" name="phone_number">
+                                    <input class="input--style-4" type="text" name="phone_number" pattern="^[0-9]{10}">
                                 </div>
                             </div>
                             
@@ -778,7 +830,7 @@ input {
                             <div class="input-group">
                                 <label class="label">University</label>
                                 <div class="rs-select2 js-select-simple select--no-search">
-                                    <select name="University" class="select2" >
+                                    <select class="select2" name="University">
                                         <option  disabled="disabled" selected="selected" value="-1">Select University</option>
                                         <option value="IKGPTU">IKGPTU</option>
                                         <option value="MRPTU">MRPTU</option>  
@@ -806,239 +858,239 @@ input {
                             <label class="label">College</label>
                             <div class="rs-select2 js-select-simple select--no-search">
                                 <select class="select2" name="College">
-					<option  disabled="disabled" selected="selected" value="-1">Select College</option>
-					<option value="A & M INST. OF MANAGEMENT AND TECHNOLOGY, MAMOON, PATHANKOT">A & M INST. OF MANAGEMENT AND TECHNOLOGY, MAMOON, PATHANKOT</option>
-					<option value="A & M INSTITUTE OF COMPUTER AND TECHNOLOGY, PATHANKOT">A & M INSTITUTE OF COMPUTER AND TECHNOLOGY, PATHANKOT</option>
-					<option value="A. S. GROUP OF INSTITUTIONS">A. S. GROUP OF INSTITUTIONS</option>
-					<option value="ALLIED COLLEGE OF HOSPITALITY CULINARY ARTS AND MANAGEMENT, MOHALI">ALLIED COLLEGE OF HOSPITALITY CULINARY ARTS AND MANAGEMENT, MOHALI</option>
-					<option value="AMAN BHALLA INSTITUTE OF MANAGEMENT & TECHNOLOGY, KOTLI, PATHANKOT AMRITSAR HIGHWAY, PATHANKOT">AMAN BHALLA INSTITUTE OF MANAGEMENT & TECHNOLOGY, KOTLI, PATHANKOT AMRITSAR HIGHWAY, PATHANKOT</option>
-					<option value="APEEJAY INSTITUTE OF MGMT. TECHNICAL CAMPUS, JALANDHAR">APEEJAY INSTITUTE OF MGMT. TECHNICAL CAMPUS, JALANDHAR</option>
-					<option value="ARYANS BUSINESS SCHOOL">ARYANS BUSINESS SCHOOL</option>
-					<option value="Akal College of Pharmacy & Technical Education, Mastuana Sahib, Sangrur">Akal College of Pharmacy & Technical Education, Mastuana Sahib, Sangrur</option>
-					<option value="Aman Bhalla Institute of Engineering & Technology, Kotli, Pathankot">Aman Bhalla Institute of Engineering & Technology, Kotli, Pathankot</option>
-					<option value="Amar Shaheed Baba Ajit Singh Jujhar Singh Memorial College of Pharmacy, Bela, Ropar">Amar Shaheed Baba Ajit Singh Jujhar Singh Memorial College of Pharmacy, Bela, Ropar</option>
-					<option value="Amritsar College of Engineering & Technology, Amritsar">Amritsar College of Engineering & Technology, Amritsar</option>
-					<option value="Amritsar Pharmacy College, Manawala, Amritsar">Amritsar Pharmacy College, Manawala, Amritsar</option>
-					<option value="Anand College of Engineering & Management, Kapurthala">Anand College of Engineering & Management, Kapurthala</option>
-					<option value="Apeejay Institute of Management & Engineering Technical Campus, Jalandhar">Apeejay Institute of Management & Engineering Technical Campus, Jalandhar</option>
-					<option value="Aryans College of Engineering, Thuha, Banur">Aryans College of Engineering, Thuha, Banur</option>
-					<option value="B.I.S. College of Engineering & Technology, Gagra, Moga">B.I.S. College of Engineering & Technology, Gagra, Moga</option>
-					<option value="B.I.S. College of Pharmacy, Kote-Ise-Khan, Moga">B.I.S. College of Pharmacy, Kote-Ise-Khan, Moga</option>
-					<option value="BABA KHAJANDAS COLLEGE OF MANGEMENT TECHNOLOGY, LUDHIANA">BABA KHAJANDAS COLLEGE OF MANGEMENT TECHNOLOGY, LUDHIANA</option>
-					<option value="BABA KUNDAN COLLEGE, SARPANCH COLONY KULLIANWAL JAMALPUR LUDHIANA">BABA KUNDAN COLLEGE, SARPANCH COLONY KULLIANWAL JAMALPUR LUDHIANA</option>
-					<option value="BABA SHRI CHAND COLLEGE OF MANAGEMENT, LUDHIANA">BABA SHRI CHAND COLLEGE OF MANAGEMENT, LUDHIANA</option>
-					<option value="BHAI GURDAS DEGREE COLLEGE, SANGRUR">BHAI GURDAS DEGREE COLLEGE, SANGRUR</option>
-					<option value="BHAI GURDAS INSTITUTE OF MANAGEMENT & TECHNOLOGY">BHAI GURDAS INSTITUTE OF MANAGEMENT & TECHNOLOGY</option>
-					<option value="BHAI MAHA SINGH COLLEGE OF ENGINEERING">BHAI MAHA SINGH COLLEGE OF ENGINEERING</option>
-					<option value="BHUTTA COLLEGE OF ENGINEERING AND TECHNOLOGY">BHUTTA COLLEGE OF ENGINEERING AND TECHNOLOGY</option>
-					<option value="BRAHM KAMAL COLLEGE OF MANAGEMENT AND TECHNOLOGY,MUKERIA, HOSHIARPUR">BRAHM KAMAL COLLEGE OF MANAGEMENT AND TECHNOLOGY,MUKERIA, HOSHIARPUR</option>
-					<option value="BRIGHT FUTURE HOTEL MANAGEMENT AND CATERING TECHNOLOGY INSTITUTE, MOHALI">BRIGHT FUTURE HOTEL MANAGEMENT AND CATERING TECHNOLOGY INSTITUTE, MOHALI</option>
-					<option value="Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib">Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib</option>
-					<option value="Baba Farid College of Pharmacy, Morkarima, Mullanpur Distt. Ludhiana">Baba Farid College of Pharmacy, Morkarima, Mullanpur Distt. Ludhiana</option>
-					<option value="Baba Hira Singh Bhattal Institute of Engineering & Technology, Lehragaga, Sangrur">Baba Hira Singh Bhattal Institute of Engineering & Technology, Lehragaga, Sangrur</option>
-					<option value="Baba Kuma Singh Ji Engineering College, Amritsar">Baba Kuma Singh Ji Engineering College, Amritsar</option>
-					<option value="Beant College of Engineering & Technology, Gurdaspur">Beant College of Engineering & Technology, Gurdaspur</option>
-					<option value="Bhai Gurdas Institute of Engineering & Technology, Sangrur">Bhai Gurdas Institute of Engineering & Technology, Sangrur</option>
-					<option value="Bhutta College of Engineering & Technology, Bhutta, Ludhiana">Bhutta College of Engineering & Technology, Bhutta, Ludhiana</option>
-					<option value="CENTRE FOR DEVELOPMENT OF ADVANCED COMPUTING, MOHALI">CENTRE FOR DEVELOPMENT OF ADVANCED COMPUTING, MOHALI</option>
-					<option value="CGC College of Engineering, Landran, Mohali">CGC College of Engineering, Landran, Mohali</option>
-					<option value="CGC TECHNICAL CAMPUS (FACULTY OF MANAGEMENT)">CGC TECHNICAL CAMPUS (FACULTY OF MANAGEMENT)</option>
-					<option value="CGC TECHNICAL CAMPUS, FACULTY OF ENGG.">CGC TECHNICAL CAMPUS, FACULTY OF ENGG.</option>
-					<option value="CGC Technical Campus (Engineering), Jhanjeri">CGC Technical Campus (Engineering), Jhanjeri</option>
-					<option value="CHANDIGARH BUSINEESS SCHOOL OF ADMINISTRATION LANDRAN">CHANDIGARH BUSINEESS SCHOOL OF ADMINISTRATION LANDRAN</option>
-					<option value="CHANDIGARH COLLEGE OF HOSPITALITY">CHANDIGARH COLLEGE OF HOSPITALITY</option>
-					<option value="CHANDIGARH COLLEGE OF TECH. LANDRAN">CHANDIGARH COLLEGE OF TECH. LANDRAN</option>
-					<option value="CHANDIGARH ENGINEERING COLLEGE">CHANDIGARH ENGINEERING COLLEGE</option>
-					<option value="CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR">CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR</option>
-					<option value="CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, TARN TARAN">CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, TARN TARAN</option>
-					<option value="COLLEGE OF ARCHITECTURE,IET BHADDAL">COLLEGE OF ARCHITECTURE,IET BHADDAL</option>
-					<option value="COLLEGE OF ENGINEERING & MANAGEMENT">COLLEGE OF ENGINEERING & MANAGEMENT</option>
-					<option value="CT College of Pharmacy, Village Shahpur, Jalandhar">CT College of Pharmacy, Village Shahpur, Jalandhar</option>
-					<option value="CT INSTITUTE OF ENGINEERING, MANAGEMENT AND TECHNOLOGY">CT INSTITUTE OF ENGINEERING, MANAGEMENT AND TECHNOLOGY</option>
-					<option value="CT INSTITUTE OF MANAGEMENT & IT">CT INSTITUTE OF MANAGEMENT & IT</option>
-					<option value="CT INSTITUTE OF MANAGEMENT STUDIES">CT INSTITUTE OF MANAGEMENT STUDIES</option>
-					<option value="CT INSTITUTE OF TECHNOLOGY">CT INSTITUTE OF TECHNOLOGY</option>
-					<option value="CT INSTITUTE OF TECHNOLOGY & RESEARCH">CT INSTITUTE OF TECHNOLOGY & RESEARCH</option>
-					<option value="CT INSTITUTE OF TECHNOLOGY SHAHPUR, JALANDHAR">CT INSTITUTE OF TECHNOLOGY SHAHPUR, JALANDHAR</option>
-					<option value="CT Institute of Architecture & Planning, Shahpur, Jalandhar">CT Institute of Architecture & Planning, Shahpur, Jalandhar</option>
-					<option value="CT Institute of Engineering Management & Technology, Shahpur, Jalandhar">CT Institute of Engineering Management & Technology, Shahpur, Jalandhar</option>
-					<option value="CT Institute of Pharmaceutical Sciences, Shahpur, Jalandhar">CT Institute of Pharmaceutical Sciences, Shahpur, Jalandhar</option>
-					<option value="Chandigarh College of Pharmacy, Landran">Chandigarh College of Pharmacy, Landran</option>
-					<option value="Chandigarh Engineering College, Landran">Chandigarh Engineering College, Landran</option>
-					<option value="D.A.V. Institute of Engineering & Technology, Jalandhar">D.A.V. Institute of Engineering & Technology, Jalandhar</option>
-					<option value="DAV INSTITUTE OF ENGINEERING & TECHNOLOGY">DAV INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="DIPS INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">DIPS INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
-					<option value="DOABA INSTITUTE OF ENGINEERING & TECHNOLOGY">DOABA INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="DOABA KHALSA TRUST GROUP OF INSTITUTION">DOABA KHALSA TRUST GROUP OF INSTITUTION</option>
-					<option value="DOABA KHALSA TRUST GROUP OF INSTITUTION">DOABA KHALSA TRUST GROUP OF INSTITUTION</option>
-					<option value="DOABA KHALSA TRUST GROUP OF INSTITUTIONS">DOABA KHALSA TRUST GROUP OF INSTITUTIONS</option>
-					<option value="Doaba College of Pharmacy, Ghataur, Kharar">Doaba College of Pharmacy, Ghataur, Kharar</option>
-					<option value="Doaba Institute of Engineering & Technology, Ghataur, Kharar">Doaba Institute of Engineering & Technology, Ghataur, Kharar</option>
-					<option value="Doaba Khalsa Trust Group of Institutions (Engg.), Chhokran, Rahon, Nawanshahr">Doaba Khalsa Trust Group of Institutions (Engg.), Chhokran, Rahon, Nawanshahr</option>
-					<option value="G.H.G. Khalsa College of Pharmacy, Gurusar Sadhar, Ludhiana">G.H.G. Khalsa College of Pharmacy, Gurusar Sadhar, Ludhiana</option>
-					<option value="GGS COLLEGE OF MODERN TECHNOLOGY">GGS COLLEGE OF MODERN TECHNOLOGY</option>
-					<option value="GGS College of Modern Technology, Kharar">GGS College of Modern Technology, Kharar</option>
-					<option value="GIAN JYOTI GROUP OF INSTITUTIONS">GIAN JYOTI GROUP OF INSTITUTIONS</option>
-					<option value="GIAN JYOTI INSTITUTE OF MGT. & TECH., MOHALI.">GIAN JYOTI INSTITUTE OF MGT. & TECH., MOHALI.</option>
-					<option value="GLOBAL INSTITUTE OF MANAGEMENT">GLOBAL INSTITUTE OF MANAGEMENT</option>
-					<option value="GLOBAL INSTITUTE OF MANAGEMENT & EMERGING TECHNOLOGIES,AMRITSAR">GLOBAL INSTITUTE OF MANAGEMENT & EMERGING TECHNOLOGIES,AMRITSAR</option>
-					<option value="GNDEC School of Architecture, Ludhiana">GNDEC School of Architecture, Ludhiana</option>
-					<option value="GOLDEN INSTITUTE OF MANAGEMENT & TECHNOLOGY, GURDASPUR">GOLDEN INSTITUTE OF MANAGEMENT & TECHNOLOGY, GURDASPUR</option>
-					<option value="GUJRANWALA GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA">GUJRANWALA GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA</option>
-					<option value="GULZAR EDUCATIONAL & CHARITABLE TRUST’S GROUP OF INSTITUTES,">GULZAR EDUCATIONAL & CHARITABLE TRUST’S GROUP OF INSTITUTES,</option>
-					<option value="GULZAR EDUCATIONAL CHARITABLE TRUST S GROUP OF INSTITUTES">GULZAR EDUCATIONAL CHARITABLE TRUST S GROUP OF INSTITUTES</option>
-					<option value="GULZAR INSTITUTE OF PROFESSIONAL STUDIES, KHANNA, LUDHIANA">GULZAR INSTITUTE OF PROFESSIONAL STUDIES, KHANNA, LUDHIANA</option>
-					<option value="GURDASIDEVI INSTITUTE OF MANAGEMENT & TECHNOLOGY, BUDHLADA, MANSA">GURDASIDEVI INSTITUTE OF MANAGEMENT & TECHNOLOGY, BUDHLADA, MANSA</option>
-					<option value="GURU GOBIND SINGH COLLEGE OF MANAGEMENT & IT, HOSHIARPUR">GURU GOBIND SINGH COLLEGE OF MANAGEMENT & IT, HOSHIARPUR</option>
-					<option value="GURU NANAK DEV ENGINEERING COLLEGE">GURU NANAK DEV ENGINEERING COLLEGE</option>
-					<option value="GURU NANAK DEV ENGINEERING COLLEGE">GURU NANAK DEV ENGINEERING COLLEGE</option>
-					<option value="GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA">GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA</option>
-					<option value="GURU RAM DAS COLLEGE OF MANAGEMENT AND TECHNOLOGY">GURU RAM DAS COLLEGE OF MANAGEMENT AND TECHNOLOGY</option>
-					<option value="Global College of Engineering & Technology, Khanpur Khui, Anandpur Sahib">Global College of Engineering & Technology, Khanpur Khui, Anandpur Sahib</option>
-					<option value="Global College of Pharmacy, Khanpur Khui, Anandpur Sahib">Global College of Pharmacy, Khanpur Khui, Anandpur Sahib</option>
-					<option value="Global Group of Institutes,Sohian Khurd, Amritsar">Global Group of Institutes,Sohian Khurd, Amritsar</option>
-					<option value="Golden College of Engineering & Technology, Gurdaspur">Golden College of Engineering & Technology, Gurdaspur</option>
-					<option value="Government Institute of Pharmaceutical Sciences and Engineering, Amritsar">Government Institute of Pharmaceutical Sciences and Engineering, Amritsar</option>
-					<option value="Gulzar College of Engineering, Libra, Khanna, Ludhiana">Gulzar College of Engineering, Libra, Khanna, Ludhiana</option>
-					<option value="Gulzar Educational & Charitable Trust Group of Institutes, Khanna, Ludhiana">Gulzar Educational & Charitable Trust Group of Institutes, Khanna, Ludhiana</option>
-					<option value="Guru Nanak Institute of Engineering & Management, Dalewal, Hoshiarpur">Guru Nanak Institute of Engineering & Management, Dalewal, Hoshiarpur</option>
-					<option value="Guru Nanak Institute of Pharmacy, Dalewal, Hoshiarpur">Guru Nanak Institute of Pharmacy, Dalewal, Hoshiarpur</option>
-					<option value="Guru Teg Bahadur Khalsa Institute of Engineering & Technology, Chhapianwali, Malout">Guru Teg Bahadur Khalsa Institute of Engineering & Technology, Chhapianwali, Malout</option>
-					<option value="HARI PARKASH INSTITUTE OF MGT. & TECH. HIMT, SHRI HARGOBINDPUR ROAD, TANDA">HARI PARKASH INSTITUTE OF MGT. & TECH. HIMT, SHRI HARGOBINDPUR ROAD, TANDA</option>
-					<option value="HOSHIARPUR INSTITUTE OF MANAGEMENT & TECHNOLOGY">HOSHIARPUR INSTITUTE OF MANAGEMENT & TECHNOLOGY</option>
-					<option value="I.I.T.T. COLLEGE OF ENGINEERING,POJEWAL">I.I.T.T. COLLEGE OF ENGINEERING,POJEWAL</option>
-					<option value="IITT COLLEGE OF ENGG., POJEWAL">IITT COLLEGE OF ENGG., POJEWAL</option>
-					<option value="INDO GLOBAL COLLEGE OF ENGINEERING">INDO GLOBAL COLLEGE OF ENGINEERING</option>
-					<option value="INNOCENT HEARTS GROUP OF INSTITUTIONS, LOHARAN , JALANDHAR">INNOCENT HEARTS GROUP OF INSTITUTIONS, LOHARAN , JALANDHAR</option>
-					<option value="INSTITUTE OF ENGINEERING & TECHNOLOGY (IET) BHADDAL TECHNICAL CAMPUS">INSTITUTE OF ENGINEERING & TECHNOLOGY (IET) BHADDAL TECHNICAL CAMPUS</option>
-					<option value="Indo Global College of Architecture, Abhipur, Mohali">Indo Global College of Architecture, Abhipur, Mohali</option>
-					<option value="Indo Global College of Engineering, Abhipur, Mohali">Indo Global College of Engineering, Abhipur, Mohali</option>
-					<option value="Institute of Engineering & Technology, Bhaddal, Ropar">Institute of Engineering & Technology, Bhaddal, Ropar</option>
-					<option value="Institute of Pharmaceutical Sciences, Bhaddal, Ropar">Institute of Pharmaceutical Sciences, Bhaddal, Ropar</option>
-					<option value="K.C. College of Engineering & Information Technology, Kariam, Nawanshahr">K.C. College of Engineering & Information Technology, Kariam, Nawanshahr</option>
-					<option value="KC COLLEGE OF ENGINEERING & INFORMATION TECHNOLOGY">KC COLLEGE OF ENGINEERING & INFORMATION TECHNOLOGY</option>
-					<option value="KC COLLEGE OF HOTEL MANAGEMENT, NAWANSHAHR">KC COLLEGE OF HOTEL MANAGEMENT, NAWANSHAHR</option>
-					<option value="KCL INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">KCL INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
-					<option value="KHALSA INSTITUTE OF MANAGEMENT & TECHNOLOGY FOR WOMEN, LUDHIANA">KHALSA INSTITUTE OF MANAGEMENT & TECHNOLOGY FOR WOMEN, LUDHIANA</option>
-					<option value="Khalsa College of Engineering & Technology, Amritsar">Khalsa College of Engineering & Technology, Amritsar</option>
-					<option value="Khalsa College of Pharmacy, Amritsar">Khalsa College of Pharmacy, Amritsar</option>
-					<option value="LALA JAGAT NARYAN INSTITUTE OF INFO. TECH. & MGT, JALALABAD">LALA JAGAT NARYAN INSTITUTE OF INFO. TECH. & MGT, JALALABAD</option>
-					<option value="LUDHIANA COLLEGE OF ENGINEERING & TECHNOLOGY">LUDHIANA COLLEGE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="LUDHIANA GROUP OF COLLEGES">LUDHIANA GROUP OF COLLEGES</option>
-					<option value="Ludhiana College of Engineering & Technology, Katani Kalan, Ludhiana">Ludhiana College of Engineering & Technology, Katani Kalan, Ludhiana</option>
-					<option value="Ludhiana Group of Colleges, Chowk Chowkimann, Ludhiana">Ludhiana Group of Colleges, Chowk Chowkimann, Ludhiana</option>
-					<option value="Lyallpur Khalsa College of Engineering, Cantt Road, Jalandhar">Lyallpur Khalsa College of Engineering, Cantt Road, Jalandhar</option>
-					<option value="M.K EDUCATION SOCIETIES'S GROUP OF INSTITUTIONS">M.K EDUCATION SOCIETIES'S GROUP OF INSTITUTIONS</option>
-					<option value="M.K. EDUCATION SOCIETIES GROUP OF INSTITUTIONS">M.K. EDUCATION SOCIETIES GROUP OF INSTITUTIONS</option>
-					<option value="M.K. Education Societies Group of Institutions, Amritsar">M.K. Education Societies Group of Institutions, Amritsar</option>
-					<option value="MALOUT INSTITUTE OF MANAGEMENT & INFORMATION TECHNOLOGY, MALOUT">MALOUT INSTITUTE OF MANAGEMENT & INFORMATION TECHNOLOGY, MALOUT</option>
-					<option value="MOHANDAI OSWAL HOSPITAL, GT ROAD, SHERPUR BYEPASS, LUDHIANA">MOHANDAI OSWAL HOSPITAL, GT ROAD, SHERPUR BYEPASS, LUDHIANA</option>
-					<option value="Malout Institute of Management & Information Technology, Malout">Malout Institute of Management & Information Technology, Malout</option>
-					<option value="Modern Group of Colleges (Engineering), Mukerian, Hoshiarpur">Modern Group of Colleges (Engineering), Mukerian, Hoshiarpur</option>
-					<option value="NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY, LUDHIANA">NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY, LUDHIANA</option>
-					<option value="NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY,MOHALI">NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY,MOHALI</option>
-					<option value="PANNU COLLEGE OF MANAGEMENT & TECHNOLOGY, MARRI PANWAN,GURDASPUR">PANNU COLLEGE OF MANAGEMENT & TECHNOLOGY, MARRI PANWAN,GURDASPUR</option>
-					<option value="PANNU WOMEN COLLEGE OF MANAGEMENT, GURDASPUR">PANNU WOMEN COLLEGE OF MANAGEMENT, GURDASPUR</option>
-					<option value="PATHANKOT COLLEGE OF MANAGEMENT & TECHNOLOGY, PATHANKOT">PATHANKOT COLLEGE OF MANAGEMENT & TECHNOLOGY, PATHANKOT</option>
-					<option value="PATHANKOT COLLEGE OF MANAGEMENT AND TECHNOLOGY, PATHANKOT">PATHANKOT COLLEGE OF MANAGEMENT AND TECHNOLOGY, PATHANKOT</option>
-					<option value="PCTE Group of Institutes, Ferozepur Road, Near Baddowal, Jhande, Ludhiana">PCTE Group of Institutes, Ferozepur Road, Near Baddowal, Jhande, Ludhiana</option>
-					<option value="PCTE Institute of Engineering & Technology, PCTE Campus, Jhande, Ludhiana">PCTE Institute of Engineering & Technology, PCTE Campus, Jhande, Ludhiana</option>
-					<option value="PTU NALANDA SCHOOL OF TQM & ENTREPRENEURSHIP">PTU NALANDA SCHOOL OF TQM & ENTREPRENEURSHIP</option>
-					<option value="PUNJAB COLLEGE OF TECHNICAL EDUCATION">PUNJAB COLLEGE OF TECHNICAL EDUCATION</option>
-					<option value="PUNJAB COLLEGE OF TECHNICAL EDUCATION LUDHIANA">PUNJAB COLLEGE OF TECHNICAL EDUCATION LUDHIANA</option>
-					<option value="PUNJAB INSTITUTE OF ENGG. & APPLIED RESEARCH">PUNJAB INSTITUTE OF ENGG. & APPLIED RESEARCH</option>
-					<option value="PUNJAB INSTITUTE OF MANAGEMENT & TECHNOLOGY">PUNJAB INSTITUTE OF MANAGEMENT & TECHNOLOGY</option>
-					<option value="PYRAMID COLLEGE OF BUSINESS & TECHNOLOGY">PYRAMID COLLEGE OF BUSINESS & TECHNOLOGY</option>
-					<option value="Punjab College of Engineering & Technology, Lalru Mandi">Punjab College of Engineering & Technology, Lalru Mandi</option>
-					<option value="QUEST INFOSYS FOUNDATION GROUP OF INSTITUTIONS">QUEST INFOSYS FOUNDATION GROUP OF INSTITUTIONS</option>
-					<option value="Quest Infosys Foundation Group of Institutions, Jhanjeri, Mohali">Quest Infosys Foundation Group of Institutions, Jhanjeri, Mohali</option>
-					<option value="RADICAL BUSINESS SCHOOL, AMRITSAR">RADICAL BUSINESS SCHOOL, AMRITSAR</option>
-					<option value="RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GRIOUP OF INSTITUTIONS">RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GRIOUP OF INSTITUTIONS</option>
-					<option value="RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GROUP OF INSTITUTIONS">RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GROUP OF INSTITUTIONS</option>
-					<option value="RAMGARHIA INSTITUTE OF ENGINEERING & TECHNOLOGY">RAMGARHIA INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="RAYAT & BAHARA INSTITUTE OF MANGEMENT, BOHAN,HOSHIARPUR">RAYAT & BAHARA INSTITUTE OF MANGEMENT, BOHAN,HOSHIARPUR</option>
-					<option value="RAYAT & BAHARA INSTITUTE OF PHARMACY, MOHALI">RAYAT & BAHARA INSTITUTE OF PHARMACY, MOHALI</option>
-					<option value="RAYAT GROUP OF INSTITUTES, RAILMAJRA">RAYAT GROUP OF INSTITUTES, RAILMAJRA</option>
-					<option value="RAYAT GROUP OF INSTITUTIONS, RAILMAJRA">RAYAT GROUP OF INSTITUTIONS, RAILMAJRA</option>
-					<option value="RAYAT INSTITUTE OF MANAGEMENT, RAILMAJRA">RAYAT INSTITUTE OF MANAGEMENT, RAILMAJRA</option>
-					<option value="Radical Technical Institute, Amritsar">Radical Technical Institute, Amritsar</option>
-					<option value="Ram Devi Jindal Faculty of Engineering & Technology, Derabassi, Mohali">Ram Devi Jindal Faculty of Engineering & Technology, Derabassi, Mohali</option>
-					<option value="Ramgarhia Institute of Engineering & Technology, Phagwara">Ramgarhia Institute of Engineering & Technology, Phagwara</option>
-					<option value="Rayat Bahra Institute of Engineering and Nano-Technology, Hoshiarpur">Rayat Bahra Institute of Engineering and Nano-Technology, Hoshiarpur</option>
-					<option value="Rayat Bahra Institute of Pharmacy, Bohan, Hoshiarpur">Rayat Bahra Institute of Pharmacy, Bohan, Hoshiarpur</option>
-					<option value="Rayat Group of Institutions, Railmajra, Nawanshahr">Rayat Group of Institutions, Railmajra, Nawanshahr</option>
-					<option value="S. Sukhjinder Singh Engineering & Technology College, Gurdaspur">S. Sukhjinder Singh Engineering & Technology College, Gurdaspur</option>
-					<option value="S.G.T.B INSTITUTE OF MANAGEMENT & IT, SANURA, JALANDHAR">S.G.T.B INSTITUTE OF MANAGEMENT & IT, SANURA, JALANDHAR</option>
-					<option value="S.SUKHJINDER SINGH ENGINEERING & TECHNOLOGY COLLEGE">S.SUKHJINDER SINGH ENGINEERING & TECHNOLOGY COLLEGE</option>
-					<option value="SACHDEVA ENGINEERING COLLEGE FOR GIRLS">SACHDEVA ENGINEERING COLLEGE FOR GIRLS</option>
-					<option value="SAHIBZADA AJIT SINGH INSTITUTE OF IT & RESEARCH, MOHALI.">SAHIBZADA AJIT SINGH INSTITUTE OF IT & RESEARCH, MOHALI.</option>
-					<option value="SAI INSTITUTE OF ENGINEERING & TECHNOLOGY">SAI INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="SAI INSTITUTE OF MANAGEMENT">SAI INSTITUTE OF MANAGEMENT</option>
-					<option value="SAI SCHOOL OF ARCHITECTURE">SAI SCHOOL OF ARCHITECTURE</option>
-					<option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR</option>
-					<option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, HOSHIARPUR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, HOSHIARPUR</option>
-					<option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
-					<option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, ROOPNAGAR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, ROOPNAGAR</option>
-					<option value="SAINIK INSTITUTE OF MANAGEMENT AND TECHNOLOGY, MOHALI">SAINIK INSTITUTE OF MANAGEMENT AND TECHNOLOGY, MOHALI</option>
-					<option value="SAINIK VOCATIONAL TRAINING CENTRE, NEAR GURU NANAK, GURDASPUR">SAINIK VOCATIONAL TRAINING CENTRE, NEAR GURU NANAK, GURDASPUR</option>
-					<option value="SATYAM INST. OF MGT. & TECH., NAKODAR">SATYAM INST. OF MGT. & TECH., NAKODAR</option>
-					<option value="SATYAM INSTITUTE OF MANAGEMENT, AMRITSAR">SATYAM INSTITUTE OF MANAGEMENT, AMRITSAR</option>
-					<option value="SHAHEED UDHAM SINGH COLLEGE OF ENGINEERING & TECHNOLOGY">SHAHEED UDHAM SINGH COLLEGE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="SHREE HANUMAT INSTITUTE OF MANAGEMENT & TECHNOLOGY, G.T. ROAD, GORAYA, DISTT. JALANDHAR">SHREE HANUMAT INSTITUTE OF MANAGEMENT & TECHNOLOGY, G.T. ROAD, GORAYA, DISTT. JALANDHAR</option>
-					<option value="SHRI GURU RAM DAS INSTITUTE OF MANAGEMENT AND TECH. EDUCATION, HALWARA, LUDHIANA">SHRI GURU RAM DAS INSTITUTE OF MANAGEMENT AND TECH. EDUCATION, HALWARA, LUDHIANA</option>
-					<option value="SHRI GURU RAM DAS JI COLLEGE OF MANAGEMENT AND TECHNOLOGY, MALIWAL, JALANDHAR">SHRI GURU RAM DAS JI COLLEGE OF MANAGEMENT AND TECHNOLOGY, MALIWAL, JALANDHAR</option>
-					<option value="SHRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI, PATHANKOT,">SHRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI, PATHANKOT,</option>
-					<option value="SIDANA INSTITUTE OF MANAGEMENT & TECHNOLGY, VILL.KHIALA KHURD, AMRITSAR-LOPOKE ROAD, NEAR RAM TIRATH">SIDANA INSTITUTE OF MANAGEMENT & TECHNOLGY, VILL.KHIALA KHURD, AMRITSAR-LOPOKE ROAD, NEAR RAM TIRATH</option>
-					<option value="SRI GURU ARJUN DEV COLLEGE OF MGMT & TECH, GURDASPUR">SRI GURU ARJUN DEV COLLEGE OF MGMT & TECH, GURDASPUR</option>
-					<option value="SRI GURU RAMDASS COLLEGE OF MANAGEMENT & TECHNOLOGY COLLEGE, AMRITSAR">SRI GURU RAMDASS COLLEGE OF MANAGEMENT & TECHNOLOGY COLLEGE, AMRITSAR</option>
-					<option value="SRI SAI COLLEGE OF ENGINEERING & TECHNOLOGY">SRI SAI COLLEGE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="SRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI">SRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI</option>
-					<option value="SRI SUKHMANI INSTITUTE OF ENGINEERING & TECHNOLOGY">SRI SUKHMANI INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
-					<option value="ST. SOLDIER GROUP OF INSTITUTION">ST. SOLDIER GROUP OF INSTITUTION</option>
-					<option value="ST. SOLDIER INSTITUTE OF BUSINESS MANAGEMENT &AGRICULTURE, NEAR NIT, JALANDHAR">ST. SOLDIER INSTITUTE OF BUSINESS MANAGEMENT &AGRICULTURE, NEAR NIT, JALANDHAR</option>
-					<option value="ST. SOLDIER MANAGEMENT AND TECHNICAL INSTITUTE">ST. SOLDIER MANAGEMENT AND TECHNICAL INSTITUTE</option>
-					<option value="SUS Engineering College, Tangori, Mohali">SUS Engineering College, Tangori, Mohali</option>
-					<option value="SWAMI PERMANAND COLLEGE OF ENGINEERING & TECHNOLOGY`">SWAMI PERMANAND COLLEGE OF ENGINEERING & TECHNOLOGY`</option>
-					<option value="SWAMI SARWANAND INSTITUE OF MANAGEMENT AND TECHNOLOGY">SWAMI SARWANAND INSTITUE OF MANAGEMENT AND TECHNOLOGY</option>
-					<option value="SWAMI SATYANAND COLLEGE OF MANAGEMENT & TECHNOLOGY">SWAMI SATYANAND COLLEGE OF MANAGEMENT & TECHNOLOGY</option>
-					<option value="SWAMI VIVEKANAD TECHNICAL COLLEGE,LUDHIANA">SWAMI VIVEKANAD TECHNICAL COLLEGE,LUDHIANA</option>
-					<option value="SYNETIC BUSINESS SCHOOL, LUDHIANA">SYNETIC BUSINESS SCHOOL, LUDHIANA</option>
-					<option value="Sachdeva College of Pharmacy, Kharar, Mohali">Sachdeva College of Pharmacy, Kharar, Mohali</option>
-					<option value="Saraswati College of Pharmacy, Gharuan, Mohali">Saraswati College of Pharmacy, Gharuan, Mohali</option>
-					<option value="Satyam Institute of Engineering & Technology, Kotla Doom, Amritsar">Satyam Institute of Engineering & Technology, Kotla Doom, Amritsar</option>
-					<option value="Shaheed Bhagat Singh College of Pharmacy, Sohian Kalan, Amritsar">Shaheed Bhagat Singh College of Pharmacy, Sohian Kalan, Amritsar</option>
-					<option value="Shaheed Bhagat Singh Polytechnic and Pharmacy College, Patti">Shaheed Bhagat Singh Polytechnic and Pharmacy College, Patti</option>
-					<option value="Shaheed Bhagat Singh State Technical Campus, Ferozepur">Shaheed Bhagat Singh State Technical Campus, Ferozepur</option>
-					<option value="Shaheed Udham Singh College of Engineering & Technology, Tangori, Mohali">Shaheed Udham Singh College of Engineering & Technology, Tangori, Mohali</option>
-					<option value="Shaheed Udham Singh College of Pharmacy, Tangori, Mohali">Shaheed Udham Singh College of Pharmacy, Tangori, Mohali</option>
-					<option value="Shiv Shankar Institute of Engineering & Technology, Patti">Shiv Shankar Institute of Engineering & Technology, Patti</option>
-					<option value="Shivalik College of Pharmacy, Nangal, Ropar">Shivalik College of Pharmacy, Nangal, Ropar</option>
-					<option value="Sigma College of Pharmacy, Ludhiana">Sigma College of Pharmacy, Ludhiana</option>
-					<option value="Sri Sai College of Engineering & Technology, Badhani, Pathankot">Sri Sai College of Engineering & Technology, Badhani, Pathankot</option>
-					<option value="Sri Sai College of Engineering & Technology, Manawala, Amritsar">Sri Sai College of Engineering & Technology, Manawala, Amritsar</option>
-					<option value="Sri Sai College of Pharmacy, Badhani, Pathankot">Sri Sai College of Pharmacy, Badhani, Pathankot</option>
-					<option value="Sri Sai College of Pharmacy, Manawala, Amritsar">Sri Sai College of Pharmacy, Manawala, Amritsar</option>
-					<option value="Sri Sukhmani Institute of Engineering & Technology, Derabassi">Sri Sukhmani Institute of Engineering & Technology, Derabassi</option>
-					<option value="Sri Sukhmani Institute of Pharmacy, Chandigarh Highway, Derabassi, Mohali">Sri Sukhmani Institute of Pharmacy, Chandigarh Highway, Derabassi, Mohali</option>
-					<option value="St. Soldier Group of Institutions, Jalandhar-Amritsar Bye Pass, Jalandhar">St. Soldier Group of Institutions, Jalandhar-Amritsar Bye Pass, Jalandhar</option>
-					<option value="St. Soldier Institute of Pharmacy, Jalandhar">St. Soldier Institute of Pharmacy, Jalandhar</option>
-					<option value="Sukhjinder Technical Campus (Engineering Wing), Dunera, Pathankot">Sukhjinder Technical Campus (Engineering Wing), Dunera, Pathankot</option>
-					<option value="Swami Parmanand College of Engineering & Technology, Jaulan Kalan, Lalru">Swami Parmanand College of Engineering & Technology, Jaulan Kalan, Lalru</option>
-					<option value="Swami Sarvanand Institute of Engineering & Technology, Dinanagar">Swami Sarvanand Institute of Engineering & Technology, Dinanagar</option>
-					<option value="Swami Vivekanand College of Pharmacy, Ramnagar, Banur, Patiala">Swami Vivekanand College of Pharmacy, Ramnagar, Banur, Patiala</option>
-					<option value="Swami Vivekanand Institute of Engineering & Technology, Ramnagar, Banur, Patiala">Swami Vivekanand Institute of Engineering & Technology, Ramnagar, Banur, Patiala</option>
-					<option value="Swift School of Pharmacy, Ghagar Sarai, Rajpura, Patiala">Swift School of Pharmacy, Ghagar Sarai, Rajpura, Patiala</option>
-					<option value="Swift Technical Campus, Ghaggar Sarai, Rajpura, Patiala">Swift Technical Campus, Ghaggar Sarai, Rajpura, Patiala</option>
-					<option value="TAWI COLLEGE, PATHANKOT">TAWI COLLEGE, PATHANKOT</option>
-					<option value="TRINITY INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">TRINITY INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
-					<option value="Tawi Engineering College, Shahpur Kandi, Pathankot">Tawi Engineering College, Shahpur Kandi, Pathankot</option>
-					<option value="UNIVERSAL GROUP OF INSTITUTIONS">UNIVERSAL GROUP OF INSTITUTIONS</option>
-					<option value="Universal Group of Institutions, Lalru, Derabassi, Mohali">Universal Group of Institutions, Lalru, Derabassi, Mohali</option>
-					<option value="Universal Institute of Pharmacy, Lalru, Derabassi, Mohali">Universal Institute of Pharmacy, Lalru, Derabassi, Mohali</option>
-					<option value="VIDYA JYOTI EDUCATIONAL SOCIETY, DERABASSI, MOHALI">VIDYA JYOTI EDUCATIONAL SOCIETY, DERABASSI, MOHALI</option>
-					<option value="VMS College of Pharmacy, Amritsar Road, Batala">VMS College of Pharmacy, Amritsar Road, Batala</option>
-					<option value="VMS INSTITUTE OF MANAGEMENT">VMS INSTITUTE OF MANAGEMENT</option>
-					<option value="WESTWOOD INSTITUTE OF HOTEL MANAGEMENT, MOHALI.">WESTWOOD INSTITUTE OF HOTEL MANAGEMENT, MOHALI.</option>
+								 <option  disabled="disabled" selected="selected" value="-1">Select College</option>
+                                    <option value="A & M INST. OF MANAGEMENT AND TECHNOLOGY, MAMOON, PATHANKOT">A & M INST. OF MANAGEMENT AND TECHNOLOGY, MAMOON, PATHANKOT</option>
+                                    <option value="A & M INSTITUTE OF COMPUTER AND TECHNOLOGY, PATHANKOT">A & M INSTITUTE OF COMPUTER AND TECHNOLOGY, PATHANKOT</option>
+                                    <option value="A. S. GROUP OF INSTITUTIONS">A. S. GROUP OF INSTITUTIONS</option>
+                                    <option value="ALLIED COLLEGE OF HOSPITALITY CULINARY ARTS AND MANAGEMENT, MOHALI">ALLIED COLLEGE OF HOSPITALITY CULINARY ARTS AND MANAGEMENT, MOHALI</option>
+                                    <option value="AMAN BHALLA INSTITUTE OF MANAGEMENT & TECHNOLOGY, KOTLI, PATHANKOT AMRITSAR HIGHWAY, PATHANKOT">AMAN BHALLA INSTITUTE OF MANAGEMENT & TECHNOLOGY, KOTLI, PATHANKOT AMRITSAR HIGHWAY, PATHANKOT</option>
+                                    <option value="APEEJAY INSTITUTE OF MGMT. TECHNICAL CAMPUS, JALANDHAR">APEEJAY INSTITUTE OF MGMT. TECHNICAL CAMPUS, JALANDHAR</option>
+                                    <option value="ARYANS BUSINESS SCHOOL">ARYANS BUSINESS SCHOOL</option>
+                                    <option value="Akal College of Pharmacy & Technical Education, Mastuana Sahib, Sangrur">Akal College of Pharmacy & Technical Education, Mastuana Sahib, Sangrur</option>
+                                    <option value="Aman Bhalla Institute of Engineering & Technology, Kotli, Pathankot">Aman Bhalla Institute of Engineering & Technology, Kotli, Pathankot</option>
+                                    <option value="Amar Shaheed Baba Ajit Singh Jujhar Singh Memorial College of Pharmacy, Bela, Ropar">Amar Shaheed Baba Ajit Singh Jujhar Singh Memorial College of Pharmacy, Bela, Ropar</option>
+                                    <option value="Amritsar College of Engineering & Technology, Amritsar">Amritsar College of Engineering & Technology, Amritsar</option>
+                                    <option value="Amritsar Pharmacy College, Manawala, Amritsar">Amritsar Pharmacy College, Manawala, Amritsar</option>
+                                    <option value="Anand College of Engineering & Management, Kapurthala">Anand College of Engineering & Management, Kapurthala</option>
+                                    <option value="Apeejay Institute of Management & Engineering Technical Campus, Jalandhar">Apeejay Institute of Management & Engineering Technical Campus, Jalandhar</option>
+                                    <option value="Aryans College of Engineering, Thuha, Banur">Aryans College of Engineering, Thuha, Banur</option>
+                                    <option value="B.I.S. College of Engineering & Technology, Gagra, Moga">B.I.S. College of Engineering & Technology, Gagra, Moga</option>
+                                    <option value="B.I.S. College of Pharmacy, Kote-Ise-Khan, Moga">B.I.S. College of Pharmacy, Kote-Ise-Khan, Moga</option>
+                                    <option value="BABA KHAJANDAS COLLEGE OF MANGEMENT TECHNOLOGY, LUDHIANA">BABA KHAJANDAS COLLEGE OF MANGEMENT TECHNOLOGY, LUDHIANA</option>
+                                    <option value="BABA KUNDAN COLLEGE, SARPANCH COLONY KULLIANWAL JAMALPUR LUDHIANA">BABA KUNDAN COLLEGE, SARPANCH COLONY KULLIANWAL JAMALPUR LUDHIANA</option>
+                                    <option value="BABA SHRI CHAND COLLEGE OF MANAGEMENT, LUDHIANA">BABA SHRI CHAND COLLEGE OF MANAGEMENT, LUDHIANA</option>
+                                    <option value="BHAI GURDAS DEGREE COLLEGE, SANGRUR">BHAI GURDAS DEGREE COLLEGE, SANGRUR</option>
+                                    <option value="BHAI GURDAS INSTITUTE OF MANAGEMENT & TECHNOLOGY">BHAI GURDAS INSTITUTE OF MANAGEMENT & TECHNOLOGY</option>
+                                    <option value="BHAI MAHA SINGH COLLEGE OF ENGINEERING">BHAI MAHA SINGH COLLEGE OF ENGINEERING</option>
+                                    <option value="BHUTTA COLLEGE OF ENGINEERING AND TECHNOLOGY">BHUTTA COLLEGE OF ENGINEERING AND TECHNOLOGY</option>
+                                    <option value="BRAHM KAMAL COLLEGE OF MANAGEMENT AND TECHNOLOGY,MUKERIA, HOSHIARPUR">BRAHM KAMAL COLLEGE OF MANAGEMENT AND TECHNOLOGY,MUKERIA, HOSHIARPUR</option>
+                                    <option value="BRIGHT FUTURE HOTEL MANAGEMENT AND CATERING TECHNOLOGY INSTITUTE, MOHALI">BRIGHT FUTURE HOTEL MANAGEMENT AND CATERING TECHNOLOGY INSTITUTE, MOHALI</option>
+                                    <option value="Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib">Baba Banda Singh Bahadur Engineering College, Fatehgarh Sahib</option>
+                                    <option value="Baba Farid College of Pharmacy, Morkarima, Mullanpur Distt. Ludhiana">Baba Farid College of Pharmacy, Morkarima, Mullanpur Distt. Ludhiana</option>
+                                    <option value="Baba Hira Singh Bhattal Institute of Engineering & Technology, Lehragaga, Sangrur">Baba Hira Singh Bhattal Institute of Engineering & Technology, Lehragaga, Sangrur</option>
+                                    <option value="Baba Kuma Singh Ji Engineering College, Amritsar">Baba Kuma Singh Ji Engineering College, Amritsar</option>
+                                    <option value="Beant College of Engineering & Technology, Gurdaspur">Beant College of Engineering & Technology, Gurdaspur</option>
+                                    <option value="Bhai Gurdas Institute of Engineering & Technology, Sangrur">Bhai Gurdas Institute of Engineering & Technology, Sangrur</option>
+                                    <option value="Bhutta College of Engineering & Technology, Bhutta, Ludhiana">Bhutta College of Engineering & Technology, Bhutta, Ludhiana</option>
+                                    <option value="CENTRE FOR DEVELOPMENT OF ADVANCED COMPUTING, MOHALI">CENTRE FOR DEVELOPMENT OF ADVANCED COMPUTING, MOHALI</option>
+                                    <option value="CGC College of Engineering, Landran, Mohali">CGC College of Engineering, Landran, Mohali</option>
+                                    <option value="CGC TECHNICAL CAMPUS (FACULTY OF MANAGEMENT)">CGC TECHNICAL CAMPUS (FACULTY OF MANAGEMENT)</option>
+                                    <option value="CGC TECHNICAL CAMPUS, FACULTY OF ENGG.">CGC TECHNICAL CAMPUS, FACULTY OF ENGG.</option>
+                                    <option value="CGC Technical Campus (Engineering), Jhanjeri">CGC Technical Campus (Engineering), Jhanjeri</option>
+                                    <option value="CHANDIGARH BUSINEESS SCHOOL OF ADMINISTRATION LANDRAN">CHANDIGARH BUSINEESS SCHOOL OF ADMINISTRATION LANDRAN</option>
+                                    <option value="CHANDIGARH COLLEGE OF HOSPITALITY">CHANDIGARH COLLEGE OF HOSPITALITY</option>
+                                    <option value="CHANDIGARH COLLEGE OF TECH. LANDRAN">CHANDIGARH COLLEGE OF TECH. LANDRAN</option>
+                                    <option value="CHANDIGARH ENGINEERING COLLEGE">CHANDIGARH ENGINEERING COLLEGE</option>
+                                    <option value="CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR">CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR</option>
+                                    <option value="CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, TARN TARAN">CKD INSTITUTE OF MANAGEMENT & TECHNOLOGY, TARN TARAN</option>
+                                    <option value="COLLEGE OF ARCHITECTURE,IET BHADDAL">COLLEGE OF ARCHITECTURE,IET BHADDAL</option>
+                                    <option value="COLLEGE OF ENGINEERING & MANAGEMENT">COLLEGE OF ENGINEERING & MANAGEMENT</option>
+                                    <option value="CT College of Pharmacy, Village Shahpur, Jalandhar">CT College of Pharmacy, Village Shahpur, Jalandhar</option>
+                                    <option value="CT INSTITUTE OF ENGINEERING, MANAGEMENT AND TECHNOLOGY">CT INSTITUTE OF ENGINEERING, MANAGEMENT AND TECHNOLOGY</option>
+                                    <option value="CT INSTITUTE OF MANAGEMENT & IT">CT INSTITUTE OF MANAGEMENT & IT</option>
+                                    <option value="CT INSTITUTE OF MANAGEMENT STUDIES">CT INSTITUTE OF MANAGEMENT STUDIES</option>
+                                    <option value="CT INSTITUTE OF TECHNOLOGY">CT INSTITUTE OF TECHNOLOGY</option>
+                                    <option value="CT INSTITUTE OF TECHNOLOGY & RESEARCH">CT INSTITUTE OF TECHNOLOGY & RESEARCH</option>
+                                    <option value="CT INSTITUTE OF TECHNOLOGY SHAHPUR, JALANDHAR">CT INSTITUTE OF TECHNOLOGY SHAHPUR, JALANDHAR</option>
+                                    <option value="CT Institute of Architecture & Planning, Shahpur, Jalandhar">CT Institute of Architecture & Planning, Shahpur, Jalandhar</option>
+                                    <option value="CT Institute of Engineering Management & Technology, Shahpur, Jalandhar">CT Institute of Engineering Management & Technology, Shahpur, Jalandhar</option>
+                                    <option value="CT Institute of Pharmaceutical Sciences, Shahpur, Jalandhar">CT Institute of Pharmaceutical Sciences, Shahpur, Jalandhar</option>
+                                    <option value="Chandigarh College of Pharmacy, Landran">Chandigarh College of Pharmacy, Landran</option>
+                                    <option value="Chandigarh Engineering College, Landran">Chandigarh Engineering College, Landran</option>
+                                    <option value="D.A.V. Institute of Engineering & Technology, Jalandhar">D.A.V. Institute of Engineering & Technology, Jalandhar</option>
+                                    <option value="DAV INSTITUTE OF ENGINEERING & TECHNOLOGY">DAV INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="DIPS INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">DIPS INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
+                                    <option value="DOABA INSTITUTE OF ENGINEERING & TECHNOLOGY">DOABA INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="DOABA KHALSA TRUST GROUP OF INSTITUTION">DOABA KHALSA TRUST GROUP OF INSTITUTION</option>
+                                    <option value="DOABA KHALSA TRUST GROUP OF INSTITUTION">DOABA KHALSA TRUST GROUP OF INSTITUTION</option>
+                                    <option value="DOABA KHALSA TRUST GROUP OF INSTITUTIONS">DOABA KHALSA TRUST GROUP OF INSTITUTIONS</option>
+                                    <option value="Doaba College of Pharmacy, Ghataur, Kharar">Doaba College of Pharmacy, Ghataur, Kharar</option>
+                                    <option value="Doaba Institute of Engineering & Technology, Ghataur, Kharar">Doaba Institute of Engineering & Technology, Ghataur, Kharar</option>
+                                    <option value="Doaba Khalsa Trust Group of Institutions (Engg.), Chhokran, Rahon, Nawanshahr">Doaba Khalsa Trust Group of Institutions (Engg.), Chhokran, Rahon, Nawanshahr</option>
+                                    <option value="G.H.G. Khalsa College of Pharmacy, Gurusar Sadhar, Ludhiana">G.H.G. Khalsa College of Pharmacy, Gurusar Sadhar, Ludhiana</option>
+                                    <option value="GGS COLLEGE OF MODERN TECHNOLOGY">GGS COLLEGE OF MODERN TECHNOLOGY</option>
+                                    <option value="GGS College of Modern Technology, Kharar">GGS College of Modern Technology, Kharar</option>
+                                    <option value="GIAN JYOTI GROUP OF INSTITUTIONS">GIAN JYOTI GROUP OF INSTITUTIONS</option>
+                                    <option value="GIAN JYOTI INSTITUTE OF MGT. & TECH., MOHALI.">GIAN JYOTI INSTITUTE OF MGT. & TECH., MOHALI.</option>
+                                    <option value="GLOBAL INSTITUTE OF MANAGEMENT">GLOBAL INSTITUTE OF MANAGEMENT</option>
+                                    <option value="GLOBAL INSTITUTE OF MANAGEMENT & EMERGING TECHNOLOGIES,AMRITSAR">GLOBAL INSTITUTE OF MANAGEMENT & EMERGING TECHNOLOGIES,AMRITSAR</option>
+                                    <option value="GNDEC School of Architecture, Ludhiana">GNDEC School of Architecture, Ludhiana</option>
+                                    <option value="GOLDEN INSTITUTE OF MANAGEMENT & TECHNOLOGY, GURDASPUR">GOLDEN INSTITUTE OF MANAGEMENT & TECHNOLOGY, GURDASPUR</option>
+                                    <option value="GUJRANWALA GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA">GUJRANWALA GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA</option>
+                                    <option value="GULZAR EDUCATIONAL & CHARITABLE TRUST’S GROUP OF INSTITUTES,">GULZAR EDUCATIONAL & CHARITABLE TRUST’S GROUP OF INSTITUTES,</option>
+                                    <option value="GULZAR EDUCATIONAL CHARITABLE TRUST S GROUP OF INSTITUTES">GULZAR EDUCATIONAL CHARITABLE TRUST S GROUP OF INSTITUTES</option>
+                                    <option value="GULZAR INSTITUTE OF PROFESSIONAL STUDIES, KHANNA, LUDHIANA">GULZAR INSTITUTE OF PROFESSIONAL STUDIES, KHANNA, LUDHIANA</option>
+                                    <option value="GURDASIDEVI INSTITUTE OF MANAGEMENT & TECHNOLOGY, BUDHLADA, MANSA">GURDASIDEVI INSTITUTE OF MANAGEMENT & TECHNOLOGY, BUDHLADA, MANSA</option>
+                                    <option value="GURU GOBIND SINGH COLLEGE OF MANAGEMENT & IT, HOSHIARPUR">GURU GOBIND SINGH COLLEGE OF MANAGEMENT & IT, HOSHIARPUR</option>
+                                    <option value="GURU NANAK DEV ENGINEERING COLLEGE">GURU NANAK DEV ENGINEERING COLLEGE</option>
+                                    <option value="GURU NANAK DEV ENGINEERING COLLEGE">GURU NANAK DEV ENGINEERING COLLEGE</option>
+                                    <option value="GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA">GURU NANAK INSTITUTE OF MANAGEMENT & TECHNOLOGY, LUDHIANA</option>
+                                    <option value="GURU RAM DAS COLLEGE OF MANAGEMENT AND TECHNOLOGY">GURU RAM DAS COLLEGE OF MANAGEMENT AND TECHNOLOGY</option>
+                                    <option value="Global College of Engineering & Technology, Khanpur Khui, Anandpur Sahib">Global College of Engineering & Technology, Khanpur Khui, Anandpur Sahib</option>
+                                    <option value="Global College of Pharmacy, Khanpur Khui, Anandpur Sahib">Global College of Pharmacy, Khanpur Khui, Anandpur Sahib</option>
+                                    <option value="Global Group of Institutes,Sohian Khurd, Amritsar">Global Group of Institutes,Sohian Khurd, Amritsar</option>
+                                    <option value="Golden College of Engineering & Technology, Gurdaspur">Golden College of Engineering & Technology, Gurdaspur</option>
+                                    <option value="Government Institute of Pharmaceutical Sciences and Engineering, Amritsar">Government Institute of Pharmaceutical Sciences and Engineering, Amritsar</option>
+                                    <option value="Gulzar College of Engineering, Libra, Khanna, Ludhiana">Gulzar College of Engineering, Libra, Khanna, Ludhiana</option>
+                                    <option value="Gulzar Educational & Charitable Trust Group of Institutes, Khanna, Ludhiana">Gulzar Educational & Charitable Trust Group of Institutes, Khanna, Ludhiana</option>
+                                    <option value="Guru Nanak Institute of Engineering & Management, Dalewal, Hoshiarpur">Guru Nanak Institute of Engineering & Management, Dalewal, Hoshiarpur</option>
+                                    <option value="Guru Nanak Institute of Pharmacy, Dalewal, Hoshiarpur">Guru Nanak Institute of Pharmacy, Dalewal, Hoshiarpur</option>
+                                    <option value="Guru Teg Bahadur Khalsa Institute of Engineering & Technology, Chhapianwali, Malout">Guru Teg Bahadur Khalsa Institute of Engineering & Technology, Chhapianwali, Malout</option>
+                                    <option value="HARI PARKASH INSTITUTE OF MGT. & TECH. HIMT, SHRI HARGOBINDPUR ROAD, TANDA">HARI PARKASH INSTITUTE OF MGT. & TECH. HIMT, SHRI HARGOBINDPUR ROAD, TANDA</option>
+                                    <option value="HOSHIARPUR INSTITUTE OF MANAGEMENT & TECHNOLOGY">HOSHIARPUR INSTITUTE OF MANAGEMENT & TECHNOLOGY</option>
+                                    <option value="I.I.T.T. COLLEGE OF ENGINEERING,POJEWAL">I.I.T.T. COLLEGE OF ENGINEERING,POJEWAL</option>
+                                    <option value="IITT COLLEGE OF ENGG., POJEWAL">IITT COLLEGE OF ENGG., POJEWAL</option>
+                                    <option value="INDO GLOBAL COLLEGE OF ENGINEERING">INDO GLOBAL COLLEGE OF ENGINEERING</option>
+                                    <option value="INNOCENT HEARTS GROUP OF INSTITUTIONS, LOHARAN , JALANDHAR">INNOCENT HEARTS GROUP OF INSTITUTIONS, LOHARAN , JALANDHAR</option>
+                                    <option value="INSTITUTE OF ENGINEERING & TECHNOLOGY (IET) BHADDAL TECHNICAL CAMPUS">INSTITUTE OF ENGINEERING & TECHNOLOGY (IET) BHADDAL TECHNICAL CAMPUS</option>
+                                    <option value="Indo Global College of Architecture, Abhipur, Mohali">Indo Global College of Architecture, Abhipur, Mohali</option>
+                                    <option value="Indo Global College of Engineering, Abhipur, Mohali">Indo Global College of Engineering, Abhipur, Mohali</option>
+                                    <option value="Institute of Engineering & Technology, Bhaddal, Ropar">Institute of Engineering & Technology, Bhaddal, Ropar</option>
+                                    <option value="Institute of Pharmaceutical Sciences, Bhaddal, Ropar">Institute of Pharmaceutical Sciences, Bhaddal, Ropar</option>
+                                    <option value="K.C. College of Engineering & Information Technology, Kariam, Nawanshahr">K.C. College of Engineering & Information Technology, Kariam, Nawanshahr</option>
+                                    <option value="KC COLLEGE OF ENGINEERING & INFORMATION TECHNOLOGY">KC COLLEGE OF ENGINEERING & INFORMATION TECHNOLOGY</option>
+                                    <option value="KC COLLEGE OF HOTEL MANAGEMENT, NAWANSHAHR">KC COLLEGE OF HOTEL MANAGEMENT, NAWANSHAHR</option>
+                                    <option value="KCL INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">KCL INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
+                                    <option value="KHALSA INSTITUTE OF MANAGEMENT & TECHNOLOGY FOR WOMEN, LUDHIANA">KHALSA INSTITUTE OF MANAGEMENT & TECHNOLOGY FOR WOMEN, LUDHIANA</option>
+                                    <option value="Khalsa College of Engineering & Technology, Amritsar">Khalsa College of Engineering & Technology, Amritsar</option>
+                                    <option value="Khalsa College of Pharmacy, Amritsar">Khalsa College of Pharmacy, Amritsar</option>
+                                    <option value="LALA JAGAT NARYAN INSTITUTE OF INFO. TECH. & MGT, JALALABAD">LALA JAGAT NARYAN INSTITUTE OF INFO. TECH. & MGT, JALALABAD</option>
+                                    <option value="LUDHIANA COLLEGE OF ENGINEERING & TECHNOLOGY">LUDHIANA COLLEGE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="LUDHIANA GROUP OF COLLEGES">LUDHIANA GROUP OF COLLEGES</option>
+                                    <option value="Ludhiana College of Engineering & Technology, Katani Kalan, Ludhiana">Ludhiana College of Engineering & Technology, Katani Kalan, Ludhiana</option>
+                                    <option value="Ludhiana Group of Colleges, Chowk Chowkimann, Ludhiana">Ludhiana Group of Colleges, Chowk Chowkimann, Ludhiana</option>
+                                    <option value="Lyallpur Khalsa College of Engineering, Cantt Road, Jalandhar">Lyallpur Khalsa College of Engineering, Cantt Road, Jalandhar</option>
+                                    <option value="M.K EDUCATION SOCIETIES'S GROUP OF INSTITUTIONS">M.K EDUCATION SOCIETIES'S GROUP OF INSTITUTIONS</option>
+                                    <option value="M.K. EDUCATION SOCIETIES GROUP OF INSTITUTIONS">M.K. EDUCATION SOCIETIES GROUP OF INSTITUTIONS</option>
+                                    <option value="M.K. Education Societies Group of Institutions, Amritsar">M.K. Education Societies Group of Institutions, Amritsar</option>
+                                    <option value="MALOUT INSTITUTE OF MANAGEMENT & INFORMATION TECHNOLOGY, MALOUT">MALOUT INSTITUTE OF MANAGEMENT & INFORMATION TECHNOLOGY, MALOUT</option>
+                                    <option value="MOHANDAI OSWAL HOSPITAL, GT ROAD, SHERPUR BYEPASS, LUDHIANA">MOHANDAI OSWAL HOSPITAL, GT ROAD, SHERPUR BYEPASS, LUDHIANA</option>
+                                    <option value="Malout Institute of Management & Information Technology, Malout">Malout Institute of Management & Information Technology, Malout</option>
+                                    <option value="Modern Group of Colleges (Engineering), Mukerian, Hoshiarpur">Modern Group of Colleges (Engineering), Mukerian, Hoshiarpur</option>
+                                    <option value="NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY, LUDHIANA">NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY, LUDHIANA</option>
+                                    <option value="NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY,MOHALI">NORTHERN INDIA INSTITUTE OF FASHION TECHNOLOGY,MOHALI</option>
+                                    <option value="PANNU COLLEGE OF MANAGEMENT & TECHNOLOGY, MARRI PANWAN,GURDASPUR">PANNU COLLEGE OF MANAGEMENT & TECHNOLOGY, MARRI PANWAN,GURDASPUR</option>
+                                    <option value="PANNU WOMEN COLLEGE OF MANAGEMENT, GURDASPUR">PANNU WOMEN COLLEGE OF MANAGEMENT, GURDASPUR</option>
+                                    <option value="PATHANKOT COLLEGE OF MANAGEMENT & TECHNOLOGY, PATHANKOT">PATHANKOT COLLEGE OF MANAGEMENT & TECHNOLOGY, PATHANKOT</option>
+                                    <option value="PATHANKOT COLLEGE OF MANAGEMENT AND TECHNOLOGY, PATHANKOT">PATHANKOT COLLEGE OF MANAGEMENT AND TECHNOLOGY, PATHANKOT</option>
+                                    <option value="PCTE Group of Institutes, Ferozepur Road, Near Baddowal, Jhande, Ludhiana">PCTE Group of Institutes, Ferozepur Road, Near Baddowal, Jhande, Ludhiana</option>
+                                    <option value="PCTE Institute of Engineering & Technology, PCTE Campus, Jhande, Ludhiana">PCTE Institute of Engineering & Technology, PCTE Campus, Jhande, Ludhiana</option>
+                                    <option value="PTU NALANDA SCHOOL OF TQM & ENTREPRENEURSHIP">PTU NALANDA SCHOOL OF TQM & ENTREPRENEURSHIP</option>
+                                    <option value="PUNJAB COLLEGE OF TECHNICAL EDUCATION">PUNJAB COLLEGE OF TECHNICAL EDUCATION</option>
+                                    <option value="PUNJAB COLLEGE OF TECHNICAL EDUCATION LUDHIANA">PUNJAB COLLEGE OF TECHNICAL EDUCATION LUDHIANA</option>
+                                    <option value="PUNJAB INSTITUTE OF ENGG. & APPLIED RESEARCH">PUNJAB INSTITUTE OF ENGG. & APPLIED RESEARCH</option>
+                                    <option value="PUNJAB INSTITUTE OF MANAGEMENT & TECHNOLOGY">PUNJAB INSTITUTE OF MANAGEMENT & TECHNOLOGY</option>
+                                    <option value="PYRAMID COLLEGE OF BUSINESS & TECHNOLOGY">PYRAMID COLLEGE OF BUSINESS & TECHNOLOGY</option>
+                                    <option value="Punjab College of Engineering & Technology, Lalru Mandi">Punjab College of Engineering & Technology, Lalru Mandi</option>
+                                    <option value="QUEST INFOSYS FOUNDATION GROUP OF INSTITUTIONS">QUEST INFOSYS FOUNDATION GROUP OF INSTITUTIONS</option>
+                                    <option value="Quest Infosys Foundation Group of Institutions, Jhanjeri, Mohali">Quest Infosys Foundation Group of Institutions, Jhanjeri, Mohali</option>
+                                    <option value="RADICAL BUSINESS SCHOOL, AMRITSAR">RADICAL BUSINESS SCHOOL, AMRITSAR</option>
+                                    <option value="RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GRIOUP OF INSTITUTIONS">RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GRIOUP OF INSTITUTIONS</option>
+                                    <option value="RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GROUP OF INSTITUTIONS">RAM DEVI JINDAL EDUCATIONAL CHARITABLE SOCIETY GROUP OF INSTITUTIONS</option>
+                                    <option value="RAMGARHIA INSTITUTE OF ENGINEERING & TECHNOLOGY">RAMGARHIA INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="RAYAT & BAHARA INSTITUTE OF MANGEMENT, BOHAN,HOSHIARPUR">RAYAT & BAHARA INSTITUTE OF MANGEMENT, BOHAN,HOSHIARPUR</option>
+                                    <option value="RAYAT & BAHARA INSTITUTE OF PHARMACY, MOHALI">RAYAT & BAHARA INSTITUTE OF PHARMACY, MOHALI</option>
+                                    <option value="RAYAT GROUP OF INSTITUTES, RAILMAJRA">RAYAT GROUP OF INSTITUTES, RAILMAJRA</option>
+                                    <option value="RAYAT GROUP OF INSTITUTIONS, RAILMAJRA">RAYAT GROUP OF INSTITUTIONS, RAILMAJRA</option>
+                                    <option value="RAYAT INSTITUTE OF MANAGEMENT, RAILMAJRA">RAYAT INSTITUTE OF MANAGEMENT, RAILMAJRA</option>
+                                    <option value="Radical Technical Institute, Amritsar">Radical Technical Institute, Amritsar</option>
+                                    <option value="Ram Devi Jindal Faculty of Engineering & Technology, Derabassi, Mohali">Ram Devi Jindal Faculty of Engineering & Technology, Derabassi, Mohali</option>
+                                    <option value="Ramgarhia Institute of Engineering & Technology, Phagwara">Ramgarhia Institute of Engineering & Technology, Phagwara</option>
+                                    <option value="Rayat Bahra Institute of Engineering and Nano-Technology, Hoshiarpur">Rayat Bahra Institute of Engineering and Nano-Technology, Hoshiarpur</option>
+                                    <option value="Rayat Bahra Institute of Pharmacy, Bohan, Hoshiarpur">Rayat Bahra Institute of Pharmacy, Bohan, Hoshiarpur</option>
+                                    <option value="Rayat Group of Institutions, Railmajra, Nawanshahr">Rayat Group of Institutions, Railmajra, Nawanshahr</option>
+                                    <option value="S. Sukhjinder Singh Engineering & Technology College, Gurdaspur">S. Sukhjinder Singh Engineering & Technology College, Gurdaspur</option>
+                                    <option value="S.G.T.B INSTITUTE OF MANAGEMENT & IT, SANURA, JALANDHAR">S.G.T.B INSTITUTE OF MANAGEMENT & IT, SANURA, JALANDHAR</option>
+                                    <option value="S.SUKHJINDER SINGH ENGINEERING & TECHNOLOGY COLLEGE">S.SUKHJINDER SINGH ENGINEERING & TECHNOLOGY COLLEGE</option>
+                                    <option value="SACHDEVA ENGINEERING COLLEGE FOR GIRLS">SACHDEVA ENGINEERING COLLEGE FOR GIRLS</option>
+                                    <option value="SAHIBZADA AJIT SINGH INSTITUTE OF IT & RESEARCH, MOHALI.">SAHIBZADA AJIT SINGH INSTITUTE OF IT & RESEARCH, MOHALI.</option>
+                                    <option value="SAI INSTITUTE OF ENGINEERING & TECHNOLOGY">SAI INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="SAI INSTITUTE OF MANAGEMENT">SAI INSTITUTE OF MANAGEMENT</option>
+                                    <option value="SAI SCHOOL OF ARCHITECTURE">SAI SCHOOL OF ARCHITECTURE</option>
+                                    <option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, AMRITSAR</option>
+                                    <option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, HOSHIARPUR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, HOSHIARPUR</option>
+                                    <option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
+                                    <option value="SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, ROOPNAGAR">SAINIK INSTITUTE OF MANAGEMENT & TECHNOLOGY, ROOPNAGAR</option>
+                                    <option value="SAINIK INSTITUTE OF MANAGEMENT AND TECHNOLOGY, MOHALI">SAINIK INSTITUTE OF MANAGEMENT AND TECHNOLOGY, MOHALI</option>
+                                    <option value="SAINIK VOCATIONAL TRAINING CENTRE, NEAR GURU NANAK, GURDASPUR">SAINIK VOCATIONAL TRAINING CENTRE, NEAR GURU NANAK, GURDASPUR</option>
+                                    <option value="SATYAM INST. OF MGT. & TECH., NAKODAR">SATYAM INST. OF MGT. & TECH., NAKODAR</option>
+                                    <option value="SATYAM INSTITUTE OF MANAGEMENT, AMRITSAR">SATYAM INSTITUTE OF MANAGEMENT, AMRITSAR</option>
+                                    <option value="SHAHEED UDHAM SINGH COLLEGE OF ENGINEERING & TECHNOLOGY">SHAHEED UDHAM SINGH COLLEGE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="SHREE HANUMAT INSTITUTE OF MANAGEMENT & TECHNOLOGY, G.T. ROAD, GORAYA, DISTT. JALANDHAR">SHREE HANUMAT INSTITUTE OF MANAGEMENT & TECHNOLOGY, G.T. ROAD, GORAYA, DISTT. JALANDHAR</option>
+                                    <option value="SHRI GURU RAM DAS INSTITUTE OF MANAGEMENT AND TECH. EDUCATION, HALWARA, LUDHIANA">SHRI GURU RAM DAS INSTITUTE OF MANAGEMENT AND TECH. EDUCATION, HALWARA, LUDHIANA</option>
+                                    <option value="SHRI GURU RAM DAS JI COLLEGE OF MANAGEMENT AND TECHNOLOGY, MALIWAL, JALANDHAR">SHRI GURU RAM DAS JI COLLEGE OF MANAGEMENT AND TECHNOLOGY, MALIWAL, JALANDHAR</option>
+                                    <option value="SHRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI, PATHANKOT,">SHRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI, PATHANKOT,</option>
+                                    <option value="SIDANA INSTITUTE OF MANAGEMENT & TECHNOLGY, VILL.KHIALA KHURD, AMRITSAR-LOPOKE ROAD, NEAR RAM TIRATH">SIDANA INSTITUTE OF MANAGEMENT & TECHNOLGY, VILL.KHIALA KHURD, AMRITSAR-LOPOKE ROAD, NEAR RAM TIRATH</option>
+                                    <option value="SRI GURU ARJUN DEV COLLEGE OF MGMT & TECH, GURDASPUR">SRI GURU ARJUN DEV COLLEGE OF MGMT & TECH, GURDASPUR</option>
+                                    <option value="SRI GURU RAMDASS COLLEGE OF MANAGEMENT & TECHNOLOGY COLLEGE, AMRITSAR">SRI GURU RAMDASS COLLEGE OF MANAGEMENT & TECHNOLOGY COLLEGE, AMRITSAR</option>
+                                    <option value="SRI SAI COLLEGE OF ENGINEERING & TECHNOLOGY">SRI SAI COLLEGE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="SRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI">SRI SAI IQBAL COLLEGE OF MANAGEMENT & INFORMATION TECHNOLOGY, BADHANI</option>
+                                    <option value="SRI SUKHMANI INSTITUTE OF ENGINEERING & TECHNOLOGY">SRI SUKHMANI INSTITUTE OF ENGINEERING & TECHNOLOGY</option>
+                                    <option value="ST. SOLDIER GROUP OF INSTITUTION">ST. SOLDIER GROUP OF INSTITUTION</option>
+                                    <option value="ST. SOLDIER INSTITUTE OF BUSINESS MANAGEMENT &AGRICULTURE, NEAR NIT, JALANDHAR">ST. SOLDIER INSTITUTE OF BUSINESS MANAGEMENT &AGRICULTURE, NEAR NIT, JALANDHAR</option>
+                                    <option value="ST. SOLDIER MANAGEMENT AND TECHNICAL INSTITUTE">ST. SOLDIER MANAGEMENT AND TECHNICAL INSTITUTE</option>
+                                    <option value="SUS Engineering College, Tangori, Mohali">SUS Engineering College, Tangori, Mohali</option>
+                                    <option value="SWAMI PERMANAND COLLEGE OF ENGINEERING & TECHNOLOGY`">SWAMI PERMANAND COLLEGE OF ENGINEERING & TECHNOLOGY`</option>
+                                    <option value="SWAMI SARWANAND INSTITUE OF MANAGEMENT AND TECHNOLOGY">SWAMI SARWANAND INSTITUE OF MANAGEMENT AND TECHNOLOGY</option>
+                                    <option value="SWAMI SATYANAND COLLEGE OF MANAGEMENT & TECHNOLOGY">SWAMI SATYANAND COLLEGE OF MANAGEMENT & TECHNOLOGY</option>
+                                    <option value="SWAMI VIVEKANAD TECHNICAL COLLEGE,LUDHIANA">SWAMI VIVEKANAD TECHNICAL COLLEGE,LUDHIANA</option>
+                                    <option value="SYNETIC BUSINESS SCHOOL, LUDHIANA">SYNETIC BUSINESS SCHOOL, LUDHIANA</option>
+                                    <option value="Sachdeva College of Pharmacy, Kharar, Mohali">Sachdeva College of Pharmacy, Kharar, Mohali</option>
+                                    <option value="Saraswati College of Pharmacy, Gharuan, Mohali">Saraswati College of Pharmacy, Gharuan, Mohali</option>
+                                    <option value="Satyam Institute of Engineering & Technology, Kotla Doom, Amritsar">Satyam Institute of Engineering & Technology, Kotla Doom, Amritsar</option>
+                                    <option value="Shaheed Bhagat Singh College of Pharmacy, Sohian Kalan, Amritsar">Shaheed Bhagat Singh College of Pharmacy, Sohian Kalan, Amritsar</option>
+                                    <option value="Shaheed Bhagat Singh Polytechnic and Pharmacy College, Patti">Shaheed Bhagat Singh Polytechnic and Pharmacy College, Patti</option>
+                                    <option value="Shaheed Bhagat Singh State Technical Campus, Ferozepur">Shaheed Bhagat Singh State Technical Campus, Ferozepur</option>
+                                    <option value="Shaheed Udham Singh College of Engineering & Technology, Tangori, Mohali">Shaheed Udham Singh College of Engineering & Technology, Tangori, Mohali</option>
+                                    <option value="Shaheed Udham Singh College of Pharmacy, Tangori, Mohali">Shaheed Udham Singh College of Pharmacy, Tangori, Mohali</option>
+                                    <option value="Shiv Shankar Institute of Engineering & Technology, Patti">Shiv Shankar Institute of Engineering & Technology, Patti</option>
+                                    <option value="Shivalik College of Pharmacy, Nangal, Ropar">Shivalik College of Pharmacy, Nangal, Ropar</option>
+                                    <option value="Sigma College of Pharmacy, Ludhiana">Sigma College of Pharmacy, Ludhiana</option>
+                                    <option value="Sri Sai College of Engineering & Technology, Badhani, Pathankot">Sri Sai College of Engineering & Technology, Badhani, Pathankot</option>
+                                    <option value="Sri Sai College of Engineering & Technology, Manawala, Amritsar">Sri Sai College of Engineering & Technology, Manawala, Amritsar</option>
+                                    <option value="Sri Sai College of Pharmacy, Badhani, Pathankot">Sri Sai College of Pharmacy, Badhani, Pathankot</option>
+                                    <option value="Sri Sai College of Pharmacy, Manawala, Amritsar">Sri Sai College of Pharmacy, Manawala, Amritsar</option>
+                                    <option value="Sri Sukhmani Institute of Engineering & Technology, Derabassi">Sri Sukhmani Institute of Engineering & Technology, Derabassi</option>
+                                    <option value="Sri Sukhmani Institute of Pharmacy, Chandigarh Highway, Derabassi, Mohali">Sri Sukhmani Institute of Pharmacy, Chandigarh Highway, Derabassi, Mohali</option>
+                                    <option value="St. Soldier Group of Institutions, Jalandhar-Amritsar Bye Pass, Jalandhar">St. Soldier Group of Institutions, Jalandhar-Amritsar Bye Pass, Jalandhar</option>
+                                    <option value="St. Soldier Institute of Pharmacy, Jalandhar">St. Soldier Institute of Pharmacy, Jalandhar</option>
+                                    <option value="Sukhjinder Technical Campus (Engineering Wing), Dunera, Pathankot">Sukhjinder Technical Campus (Engineering Wing), Dunera, Pathankot</option>
+                                    <option value="Swami Parmanand College of Engineering & Technology, Jaulan Kalan, Lalru">Swami Parmanand College of Engineering & Technology, Jaulan Kalan, Lalru</option>
+                                    <option value="Swami Sarvanand Institute of Engineering & Technology, Dinanagar">Swami Sarvanand Institute of Engineering & Technology, Dinanagar</option>
+                                    <option value="Swami Vivekanand College of Pharmacy, Ramnagar, Banur, Patiala">Swami Vivekanand College of Pharmacy, Ramnagar, Banur, Patiala</option>
+                                    <option value="Swami Vivekanand Institute of Engineering & Technology, Ramnagar, Banur, Patiala">Swami Vivekanand Institute of Engineering & Technology, Ramnagar, Banur, Patiala</option>
+                                    <option value="Swift School of Pharmacy, Ghagar Sarai, Rajpura, Patiala">Swift School of Pharmacy, Ghagar Sarai, Rajpura, Patiala</option>
+                                    <option value="Swift Technical Campus, Ghaggar Sarai, Rajpura, Patiala">Swift Technical Campus, Ghaggar Sarai, Rajpura, Patiala</option>
+                                    <option value="TAWI COLLEGE, PATHANKOT">TAWI COLLEGE, PATHANKOT</option>
+                                    <option value="TRINITY INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR">TRINITY INSTITUTE OF MANAGEMENT & TECHNOLOGY, JALANDHAR</option>
+                                    <option value="Tawi Engineering College, Shahpur Kandi, Pathankot">Tawi Engineering College, Shahpur Kandi, Pathankot</option>
+                                    <option value="UNIVERSAL GROUP OF INSTITUTIONS">UNIVERSAL GROUP OF INSTITUTIONS</option>
+                                    <option value="Universal Group of Institutions, Lalru, Derabassi, Mohali">Universal Group of Institutions, Lalru, Derabassi, Mohali</option>
+                                    <option value="Universal Institute of Pharmacy, Lalru, Derabassi, Mohali">Universal Institute of Pharmacy, Lalru, Derabassi, Mohali</option>
+                                    <option value="VIDYA JYOTI EDUCATIONAL SOCIETY, DERABASSI, MOHALI">VIDYA JYOTI EDUCATIONAL SOCIETY, DERABASSI, MOHALI</option>
+                                    <option value="VMS College of Pharmacy, Amritsar Road, Batala">VMS College of Pharmacy, Amritsar Road, Batala</option>
+                                    <option value="VMS INSTITUTE OF MANAGEMENT">VMS INSTITUTE OF MANAGEMENT</option>
+                                    <option value="WESTWOOD INSTITUTE OF HOTEL MANAGEMENT, MOHALI.">WESTWOOD INSTITUTE OF HOTEL MANAGEMENT, MOHALI.</option>
                                 </select>
                               </div>
                         </div>
